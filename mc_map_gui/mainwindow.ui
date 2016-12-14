@@ -177,7 +177,7 @@
      </font>
     </property>
     <property name="text">
-     <string>67のmc-map</string>
+     <string>mc-map</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -199,7 +199,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>lq</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label">

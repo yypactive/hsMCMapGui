@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     mIsRunning(false),
-    mThreadNum(1)
+    mThreadNum(1),
+    mInputPath(""),
+    mOutputPath(""),
+    mOutputName("")
 {
     ui->setupUi(this);
     setFixedSize(400,300);
@@ -17,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
     mMapProcess = new QProcess();
     ui->statusBar->showMessage(tr("Ready"));
     connect(mMapProcess, SIGNAL(finished(int)), this, SLOT(map_finish()));
-    mOutputName = "lq";
 }
 
 MainWindow::~MainWindow()
@@ -34,11 +36,6 @@ void MainWindow::on_toolButton_input_clicked()
      {
          mInputPath = file_path;
          ui->lineEdit_input->setText(mInputPath);
-         if (ui->lineEdit_output->text().isEmpty())
-         {
-             mOutputPath = file_path;
-             ui->lineEdit_output->setText(mInputPath);
-         }
      }
      qDebug("%s", qPrintable(mInputPath) );
 }
@@ -107,7 +104,7 @@ void MainWindow::on_buttonBox_accepted()
         ui->lineEdit_output->setEnabled(false);
         ui->checkBox->setEnabled(false);
         ui->spinBox_thread->setEnabled(false);
-        mMapProcess->start("main", arg);
+        mMapProcess->start("main.exe", arg);
         ui->statusBar->showMessage(tr("Running..."));
     }
 
@@ -139,12 +136,12 @@ void MainWindow::map_finish()
      }
      else if (mOutputPath == "")
      {
-         ui->statusBar->showMessage(tr("WARNING: No Output Path"));
+         ui->statusBar->showMessage(tr("ERROR: No Output Path"));
          return false;
      }
      else if (mOutputName == "")
      {
-         ui->statusBar->showMessage(tr("WARNING: No Output Name"));
+         ui->statusBar->showMessage(tr("ERROR: No Output Name"));
          return false;
      }
      return true;
