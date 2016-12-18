@@ -1,0 +1,3 @@
+[submodule "hsMCMap"]
+	path = hsMCMap
+	url = https://github.com/DFLY-Entertainment/hsMCMap.git
