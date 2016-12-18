@@ -11,7 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mThreadNum(1),
     mInputPath(""),
     mOutputPath(""),
-    mOutputName("")
+    mOutputName(""),
+    mYCoordinate(255)
 {
     ui->setupUi(this);
     setFixedSize(400,300);
@@ -151,4 +152,10 @@ void MainWindow::on_lineEdit_textEdited(const QString &arg1)
 {
     mOutputName = arg1;
     qDebug("%s", qPrintable(mOutputName) );
+}
+
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+    mYCoordinate = arg1;
 }

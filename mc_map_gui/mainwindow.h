@@ -35,6 +35,9 @@ private slots:
 
     void on_lineEdit_textEdited(const QString &arg1);
 
+
+    void on_spinBox_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
     QString mInputPath;
@@ -44,6 +47,7 @@ private:
     time_t mStartTime, mEndTime;
     QProcess *mMapProcess;
     bool mIsRunning;
+    unsigned int mYCoordinate;
 };
 
 #endif // MAINWINDOW_H
